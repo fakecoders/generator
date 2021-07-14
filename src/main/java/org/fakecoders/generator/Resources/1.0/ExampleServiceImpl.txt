@@ -1,0 +1,26 @@
+package com.fakecoders.initials.exampleMgmt.service.impl;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+
+
+@Component
+public class ExampleServiceImpl implements IExampleService{
+
+	public static final Logger logger = LoggerFactory.getLogger(ExampleServiceImpl.class);
+	
+	@Autowired
+	IExampleDao examplesDao;
+	
+	public void setDao(IExampleDao dao) {
+		examplesDao=dao;
+	}	
+	
+
+}

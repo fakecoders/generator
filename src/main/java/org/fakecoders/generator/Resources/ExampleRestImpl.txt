@@ -1,0 +1,103 @@
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+
+/**
+ * @author Lalit Kumar Bodana
+ * 
+ * www.fakecoders.com
+ * 14-Jul-2021
+ * 
+ */
+@RestController
+public class ExampleRestImpl {
+	private static final Logger logger= LoggerFactory.getLogger(ExampleRestImpl.class);
+
+	public ExampleRestImpl() {
+		super();
+	}
+
+	@Autowired
+	private IExampleService service;
+	
+	public Example save(Example entity) {
+		try {
+			logger.info("Inside @Class ExampleRestImpl @Method save entity {}",entity);
+			return service.save(entity);
+		} catch (Exception e) {
+			logger.error("Inside catch @Class ExampleRestImpl @Method save error{}",e.getLocalizedMessage());
+		}
+		return null;	
+	}
+ 
+	public String saveAll(Iterable entities) {
+		try {
+			logger.info("Inside @Class ExampleRestImpl @Method saveAll entity {}",entities);
+			service.saveAll(entities);
+			 return "succuss";
+		} catch (Exception e) {
+			logger.error("Inside catch @Class ExampleRestImpl @Method saveAll error{}",e.getLocalizedMessage());
+			return "failure";
+		}
+	}
+
+	public Optional<Example> findById(Integer id) {
+		logger.info("Inside @Class ExampleRestImpl @Method findById id {}",id);
+		try {
+			return service.findById(id);
+		} catch (Exception e) {
+			logger.error("Inside catch @Class ExampleRestImpl @Method findById error{}",e.getLocalizedMessage());
+		}
+		return null;
+	}
+
+	public boolean existsById(Integer id) {
+		logger.info("Inside @Class ExampleRestImpl @Method existsById id {}",id);
+		return service.existsById(id);
+	}
+
+	public Iterable<Example> findAll() {
+		logger.info("Inside @Class ExampleRestImpl @Method findAll");
+		return service.findAll();
+	}
+
+	public Iterable<Example> findAllById(Iterable<Integer> ids) {
+		logger.info("Inside @Class ExampleRestImpl @Method findAllById ids {}",ids);
+		return service.findAll();
+	}
+ 
+	public long count() {
+		logger.info("Inside @Class ExampleRestImpl @Method count");
+		return  service.count();
+	}
+
+	public void deleteById(Integer id) {
+		logger.info("Inside @Class ExampleRestImpl @Method deleteById id {}",id);
+		 service.deleteById(id);
+	}
+
+	public void delete(Example entity) {
+		logger.info("Inside @Class ExampleRestImpl @Method delete entity {}",entity);
+		 service.delete(entity);
+	}
+ 
+	public void deleteAllById(Iterable<Integer> ids) {
+		logger.info("Inside @Class ExampleRestImpl @Method deleteAllById ids{}",ids);
+		 service.deleteAllById(ids);
+	}
+
+	public void deleteAll(Iterable<Example> entities) {
+		logger.info("Inside @Class ExampleRestImpl @Method deleteAll");
+		 service.deleteAll(entities);
+	}
+ 
+	public void deleteAll() {
+		logger.info("Inside @Class ExampleRestImpl @Method deleteAll");
+		 service.deleteAll();
+	}
+
+}

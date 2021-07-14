@@ -1,0 +1,40 @@
+import java.util.Optional;
+import org.springframework.stereotype.Service;
+
+/**
+ * @author Lalit Kumar Bodana
+ *
+ * www.fakecoders.com
+ * 14-Jul-2021
+ * 
+ */
+@Service
+public interface IExampleService {
+
+	Example save(Example entity);
+
+	String  saveAll(Iterable entities);
+
+	Optional<Example> findById(Integer id);
+
+	boolean existsById(Integer id);
+
+	Iterable<Example> findAll();
+
+	Iterable<Example> findAllById(Iterable<Integer> ids);
+
+	long count();
+
+	void deleteById(Integer id);
+
+	void delete(Example entity);
+
+	void deleteAllById(Iterable<Integer> ids);
+
+	void deleteAll(Iterable<Example> entities);
+
+	void deleteAll();
+
+
+
+}
